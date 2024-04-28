@@ -1,100 +1,20 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = 'lderequesens'
-author = "Leonardo de Requeséns"
-
-[markup]
-  # (Optional) To be able to use all Prism plugins, the theme enables unsafe
-  # rendering by default
-  #_merge = "deep"
-
-[build]
-  # The theme enables writeStats which is required for PurgeCSS
-  _merge = "deep"
-
-[params]
- [params.logo]
-  text = "lderequesens"
-  url = "/"
-  [params.prism]
-    languages = [
-      "bash",
-      "markup",
-      "css",
-      "clike",
-      "javascript",
-      "typescript",
-      "python",
-      "c",
-      "go",
-      "rust",
-      "ruby"
-    ]
-    plugins = [
-      "normalize-whitespace",
-      "toolbar",
-      "copy-to-clipboard"
-    ]
-  # Tags are shown on the bottom rigth of the page
-  [params.tagCloud]
-    enable = true
-    minFontSizeRem = 0.8
-    maxFontSizeRem = 2.0
-
-# This hopefully will be simpler in the future.
-# See: https://github.com/schnerring/hugo-theme-gruvbox/issues/16
-[module]
-  [[module.imports]]
-    path = "github.com/schnerring/hugo-theme-gruvbox"
-  [[module.imports]]
-    path = "github.com/schnerring/hugo-mod-json-resume"
-    [[module.imports.mounts]]
-      source = "data"
-      target = "data"
-    [[module.imports.mounts]]
-      source = "layouts"
-      target = "layouts"
-    [[module.imports.mounts]]
-      source = "assets/css/json-resume.css"
-      target = "assets/css/critical/44-json-resume.css"
-  [[module.mounts]]
-    # required by hugo-mod-json-resume
-    source = "node_modules/simple-icons/icons"
-    target = "assets/simple-icons"
-  [[module.mounts]]
-    source = "assets"
-    target = "assets"
-  [[module.mounts]]
-    source = "layouts"
-    target = "layouts"
-  [[module.mounts]]
-    source = "static"
-    target = "static"
-  [[module.mounts]]
-    source = "node_modules/prismjs"
-    target = "assets/prismjs"
-  [[module.mounts]]
-    source = "node_modules/prism-themes/themes"
-    target = "assets/prism-themes"
-  [[module.mounts]]
-    source = "node_modules/typeface-fira-code/files"
-    target = "static/fonts"
-  [[module.mounts]]
-    source = "node_modules/typeface-roboto-slab/files"
-    target = "static/fonts"
-  [[module.mounts]]
-    source = "node_modules/@tabler/icons/icons"
-    target = "assets/tabler-icons"
-
+title = 'Pudú Programming'
+# Plese change
+theme = 'm10c'
 
 [menu]
   [[menu.main]]
-    identifier = "blog"
-    name = "Blog"
-    url = "/"
-    weight = 10
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about"
-    weight = 20
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+
+[params]
+  author = "Leonardo de Requeséns"
+  description = "I have been a computer guy all my life. I am passionate about technology and the automation of small tasks. I like video games and board games, piano, hats, cats and more."
+  menu_item_separator = " - "
+  [[params.social]]
+    icon = "github"
+    name = "My Github"
+    url = "https://github.com/lderequesensS"

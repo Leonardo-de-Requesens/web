@@ -2,18 +2,23 @@
 title: "Doing a TUI With Bubbletea"
 date: 2024-03-25T00:00:57-03:00
 draft: false
+tags:
+    - terminal
+    - go
 ---
 So my idea is to create a mega simple tui with go and the [bubbletea](https://github.com/charmbracelet/bubbletea) framework for a script that I have and use sometimes, this script get all .mp4 and .mvk files, call `ffprobe` and gets the duration of that file, then sum all the durations and prints that sum. Simple enough right?
 
 # Step 1: get duration with Go
 So I'm not good with go but I like the language so I will try to use it, first problem is... how do you get the duration of a file?, after a quick search most of the sites said that I better use `ffprobe` like I'm doing with my script but I **really** want to do it myself, still my plan B is just calling `ffprobe` from go if I can't really do it or if my solution is slower that `ffprobe`.
 
-I searched for the technical specifications of mp4 files and started reading ISO 14496-14 but didn't find an specific way to calculate the duration so I changed to ISO 14496-12 and found that the box `mvhd` has 'duration' and 'timescale' so should I just multiply them and be happy... right?, well no, first of all you need to find the box and for that I'm reading the file byte by byte and when I found the 'm' rune I try to check if 'vhd' is next (the box names are just characters in the file so at least I can do this). 
+I searched for the technical specifications of mp4 files and started reading ISO 14496-14 but didn't find an specific way to calculate the duration so I changed to ISO 14496-12 and found that the box `mvhd` has 'duration' and 'timescale' so I should just multiply them and be happy... right?, well no, first of all you need to find the box and for that I'm reading the file byte by byte and when I found the 'm' rune I try to check if 'vhd' is next (the box names are just characters in the file so at least I can do this). 
 
-After finding the `mvhd` box I need be careful reading the information because boxes can have different size depending of some variables, for example if the file is too big some variables are stored in 64 bits instead of the default 32 bits, I think most of my videos should be small but I don't want to break the script so easily.
+After finding the `mvhd` box I need be careful read the information because boxes can have different size depending of some variables, for example if the file is too big some variables are stored in 64 bits instead of the default 32 bits, I think most of my videos should be small but I don't want to break the script so easily.
 
 Here is a simple diagram of what I need to read in the file after finding the `mvhd` identifier:
-![Box properties](20240323175041.png)
+
+![Box properties](/20240323175041_mp4_diagram.png)
+
 \*: Box class can be bigger but only for `uuid` so we are not missing much
 
 MovieHeadBox extends FullBox which extends Box, so after finding the box name I need to:

@@ -1,0 +1,29 @@
+{{ define "main" }}
+  <article>
+    <ul class="posts-list">
+      {{ range where .Paginator.Pages "Type" "!=" "page" }}
+        <li class="posts-list-item">
+          <a class="posts-list-item-title" href="{{ .Permalink }}">{{ .Title }}</a>
+          <span class="posts-list-item-description">
+            {{ partial "icon.html" (dict "ctx" $ "name" "calendar") }}
+            {{ .PublishDate.Format "2006 Jan 2" }}
+            <span class="posts-list-item-separator">-</span>
+            {{ partial "icon.html" (dict "ctx" $ "name" "clock") }}
+            {{ .ReadingTime }} min read
+            <span class="posts-list-item-separator">-</span>
+            {{ range $name := .Params.tags}}
+              {{ partial "icon.html" (dict "ctx" $ "name" "tag") }}
+              {{ with $.Site.GetPage (printf "/tags/%s" $name) }}
+                <div class="tagbutton">
+                  <a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>">{{$name}}</a>
+                  &ensp;
+                </div>
+              {{end}}
+          {{end}}
+          </span>
+        </li>
+      {{ end }}
+    </ul>
+    {{ partial "pagination.html" $ }}
+  </article>
+{{ end }}

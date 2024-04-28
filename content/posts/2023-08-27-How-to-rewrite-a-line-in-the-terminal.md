@@ -2,7 +2,8 @@
 title: "How to Rewrite a Line in the Terminal"
 date: 2023-08-27T09:45:19-03:00
 tags:
-  - Code
+  - terminal
+  - c
 draft: false
 ---
 

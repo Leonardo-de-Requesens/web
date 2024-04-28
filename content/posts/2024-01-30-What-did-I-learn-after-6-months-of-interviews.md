@@ -2,7 +2,7 @@
 title: "What did I learn after 6 months of interviews"
 date: 2024-01-30T22:35:37-03:00
 tags:
-  - Code
+  - SWE
 draft: false
 ---
 So I was laid off on 2023-07 and started to interview for junior positions at different companies, from Chile and US, this process took me 26h01m+ (only in calls and interviews, I didn't record how much time I studied) and this is what I learned:
