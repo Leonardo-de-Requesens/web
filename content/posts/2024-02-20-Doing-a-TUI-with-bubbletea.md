@@ -1,7 +1,7 @@
 ---
 title: "Doing a TUI With Bubbletea"
 date: 2024-03-25T00:00:57-03:00
-draft: false
+draft: true
 tags:
     - terminal
     - go
