@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = 'Pudú Programming'
 # Plese change
 theme = 'm10c'
+paginate = 8
 
 [menu]
   [[menu.main]]

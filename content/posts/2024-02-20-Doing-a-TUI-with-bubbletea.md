@@ -18,7 +18,8 @@ I searched for the technical specifications of mp4 files and started reading ISO
 After finding the `mvhd` box I need be careful reading the information because boxes can have different sizes depending of some variables, for example if the file is too big some variables are stored in 64 bits instead of the default 32 bits, I think most of my videos should be small but I don't want to break the script so easily.
 
 Here is a simple diagram of what I need to read in the file after finding the `mvhd` identifier:
-![[Pasted image 20240323175041.png]]
+![Diagram](/20240323175041_mp4_diagram.png)
+
 \*: Box class can be bigger but only for `uuid` so we are not missing much
 
 MovieHeadBox extends FullBox which extends Box, so after finding the box name I need to:
